@@ -18,19 +18,24 @@ app.use(express.static('html'))
 app.use(bodyParser.json())
 
 const getTweets = async () => {
-  // todo: get all tweets
+  return await Tweet.find({})
 }
 
 const getUserTweets = async username => {
-  // todo: get all tweets from a specific user
+  return await Tweet.find({username: username})
 }
 
 const createTweet = async (username, text) => {
-  // todo: create a tweet with a username and text
+  return new Tweet({
+    text,
+    username
+  }).save()
 }
 
 const deleteTweet = async id => {
-  // todo: delete a single tweet, given the id
+  return Tweet.deleteOne({
+    _id: id
+  })
 }
 
 /*
